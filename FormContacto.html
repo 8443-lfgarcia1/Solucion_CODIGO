@@ -8,15 +8,36 @@
     <link rel="stylesheet" href="Recursos/MisEstilos.css">
   </head>
   <body>
-    <form class="" action="" method="post" name="FormContacto">
+    <script>
+      function validar(){
+        var valor1 = document.getElementById('email').value;
+        var valor2 = document.getElementById('tel').value;
+        var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+        if ((expresion.test(valor1)) && ((valor2.length == 10) && ( !isNaN (valor2) ))) {
+          return true;
+        } else{
+          alert('Los datos ingresados son incorrectos');
+          alert;
+            return false;
+          }
+          
+        } 
+      
+      let time;
+      function enviar(a) {
+        a.disabled = true;
+        a.value = 'Enviando datos ...';
+      }
+    </script>
+    <form class="" action="" method="post" name="FormContacto" onsubmit="return validar()">
       <h2>Contacto</h2>
       <p>Correo Electronico</p>
-      <input type="text" name="txtEmail" placeholder="&#9993; usuario@mail.com">
+      <input type="text" name="txtEmail" id="email" placeholder="&#9993; usuario@mail.com">
       <p>Fecha de Nacimiento</p>
       <input type="date" name="txtFecha">
       <p>Teléfono</p>
-      <input type="text" name="txtTelefono" placeholder="&#9742; Telefono">
-      <input type="submit" name="BtnEnviar" value="Enviar">
+      <input type="text" name="txtTelefono" id="tel" placeholder="&#9742; Telefono">
+      <input type="button" name="BtnEnviar" value="Enviar" onclick="enviar(this);validar(); this.form.submit()">
     </form>
   </body>
 </html>
