@@ -16,14 +16,18 @@
         if ((expresion.test(valor1)) && ((valor2.length == 10) && ( !isNaN (valor2) ))) {
           return true;
         } else{
-          alert('Los datos ingresados son incorrectos');
-          alert;
-            return false;
+          if ((!expresion.test(valor1)) && ((valor2.length != 10) && ( isNaN (valor2) ))){
+            alert("Email y Telefono no validos. Intente de nuevo");
+          }else{
+            if(!expresion.test(valor1)){
+              alert("Email no valido. Intente de nuevo");
+            }else{
+              alert("Telefono no valido. Intente de nuevo");
+            }
           }
-          
+          return false;
         } 
-      
-      let time;
+      }
       function enviar(a) {
         a.disabled = true;
         a.value = 'Enviando datos ...';
